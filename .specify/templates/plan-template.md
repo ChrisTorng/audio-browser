@@ -47,7 +47,35 @@
 ## Constitution Check
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+### Code Quality Gates
+- [ ] Type safety implementation planned for all audio processing functions
+- [ ] Maximum 10 cyclomatic complexity for all audio processing functions
+- [ ] Single responsibility principle verified for all audio components
+- [ ] Comprehensive documentation planned for audio domain concepts
+
+### Testing Standards Gates  
+- [ ] TDD approach confirmed: tests written before implementation
+- [ ] Audio-specific test cases planned (sample audio files, format compatibility)
+- [ ] Integration tests for audio format compatibility planned
+- [ ] 90% test coverage target for critical audio processing paths
+
+### User Experience Consistency Gates
+- [ ] Standardized audio player control patterns defined
+- [ ] Consistent error handling and loading states for all audio operations
+- [ ] Keyboard shortcuts and accessibility features planned
+- [ ] Responsive design for audio interface components
+
+### Performance Requirements Gates
+- [ ] Audio file loading <2s for files <50MB verified feasible
+- [ ] Playback latency <100ms requirement confirmed achievable  
+- [ ] Memory usage limits for audio buffers (<200MB per track) planned
+- [ ] Web Workers implementation for non-blocking audio processing
+
+### Audio Format Standards Gates
+- [ ] Support for standard audio formats (MP3, FLAC, WAV, OGG, AAC) confirmed
+- [ ] Metadata extraction consistency planned across formats
+- [ ] Waveform generation capability confirmed
+- [ ] File integrity preservation during processing verified
 
 ## Project Structure
 
@@ -208,4 +236,4 @@ ios/ or android/
 - [ ] Complexity deviations documented
 
 ---
-*Based on Constitution v2.1.1 - See `/memory/constitution.md`*
+*Based on Constitution v1.0.0 - See `/memory/constitution.md`*
