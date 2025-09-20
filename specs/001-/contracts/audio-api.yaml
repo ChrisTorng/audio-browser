@@ -1,0 +1,92 @@
+openapi: 3.0.0
+info:
+  title: Audio Browser API (Draft)
+  version: 0.1.0
+paths:
+  /scan/start:
+    post:
+      summary: Start or re-run recursive scan from root
+      responses:
+        '202': { description: Scan started }
+  /scan/status:
+    get:
+      summary: Get current scan progress
+      responses:
+        '200': { description: Progress info }
+  /files/tree:
+    get:
+      summary: Get folder tree (lazy load by path)
+      parameters:
+        - in: query
+          name: path
+          schema: { type: string }
+      responses:
+        '200': { description: Tree segment }
+  /files/list:
+    get:
+      summary: List audio files (paged & filtered)
+      parameters:
+        - in: query
+          name: folder
+          schema: { type: string }
+        - in: query
+          name: q
+          schema: { type: string }
+        - in: query
+          name: minStars
+          schema: { type: integer }
+      responses:
+        '200': { description: File list }
+  /files/{id}/waveform:
+    get:
+      summary: Get or trigger waveform data
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Waveform data or generation status }
+  /files/{id}/rating:
+    put:
+      summary: Update star rating
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                stars: { type: integer, minimum: 0, maximum: 5 }
+      responses:
+        '204': { description: Rating updated }
+  /files/{id}/description:
+    put:
+      summary: Update description
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                description: { type: string, maxLength: 1024 }
+      responses:
+        '204': { description: Description updated }
+  /search:
+    get:
+      summary: Search audio files by term & filters
+      parameters:
+        - in: query
+          name: term
+          schema: { type: string }
+        - in: query
+          name: minStars
+          schema: { type: integer }
+      responses:
+        '200': { description: Search results }
+  /stats:
+    get:
+      summary: Aggregate statistics
+      responses:
+        '200': { description: Stats }
