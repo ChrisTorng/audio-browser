@@ -78,8 +78,8 @@
 - [x] T058 整合波形 PNG 載入占位符 (frontend/src/integration/waveform_flow.ts)
 
 ## Phase 3.8: Integration & Performance Tests Execution
-- [ ] T059 執行全部 contract + integration 測試並確保最初失敗案例趨向綠燈
-- [ ] T060 調整服務/索引確保 performance baseline 達標
+- [x] T059 執行全部 contract + integration 測試並確保最初失敗案例趨向綠燈
+- [x] T060 調整服務/索引確保 performance baseline 達標
 
 ## Phase 3.9: Polish
 - [ ] T061 [P] 新增單元測試：tokenizer (backend/tests/unit/test_tokenizer.py)
