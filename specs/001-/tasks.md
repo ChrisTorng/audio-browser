@@ -62,13 +62,13 @@
  - [x] T046 Router: /stats (backend/src/api/stats.py)
 
 ## Phase 3.6: Frontend Core UI
-- [ ] T047 建立初始專案入口 (frontend/src/pages/index.ts)
-- [ ] T048 [P] Component: 樹狀瀏覽 (frontend/src/components/TreeView.ts)
-- [ ] T049 [P] Component: 播放控制列 (frontend/src/components/PlayerBar.ts)
-- [ ] T050 [P] Component: 搜尋 + 星級篩選 (frontend/src/components/SearchFilter.ts)
-- [ ] T051 [P] Component: 波形顯示 (frontend/src/components/WaveformView.ts)
-- [ ] T052 狀態管理：全域選取/播放/星級 store (frontend/src/state/store.ts)
-- [ ] T053 鍵盤快捷處理 (frontend/src/lib/keyboard.ts)
+- [x] T047 建立初始專案入口 (frontend/src/pages/index.ts)
+- [x] T048 [P] Component: 樹狀瀏覽 (frontend/src/components/TreeView.ts)
+- [x] T049 [P] Component: 播放控制列 (frontend/src/components/PlayerBar.ts)
+- [x] T050 [P] Component: 搜尋 + 星級篩選 (frontend/src/components/SearchFilter.ts)
+- [x] T051 [P] Component: 波形顯示 (frontend/src/components/WaveformView.ts)
+- [x] T052 狀態管理：全域選取/播放/星級 store (frontend/src/state/store.ts)
+- [x] T053 鍵盤快捷處理 (frontend/src/lib/keyboard.ts)
 
 ## Phase 3.7: Frontend Integration
 - [ ] T054 API 客戶端封裝 (frontend/src/lib/api.ts)
