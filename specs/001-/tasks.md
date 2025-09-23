@@ -86,7 +86,7 @@
 - [x] T062 [P] 新增單元測試：search service (backend/tests/unit/test_search_service.py)
 - [x] T063 [P] 新增單元測試：waveform service (backend/tests/unit/test_waveform_service.py)
 - [x] T064 覆蓋率報告整合 (pytest + 前端測試) (reports/coverage/)
-- [ ] T065 重構：拆分超過複雜度上限函式
+ - [x] T065 重構：拆分超過複雜度上限函式
 - [x] T066 補充文件：更新 quickstart + API 說明 (docs/api.md)
 - [x] T067 手動測試腳本/說明 (docs/manual-test.md)
 - [x] T068 性能結果紀錄 (docs/performance.md)
@@ -115,19 +115,14 @@ T061 T062 T063
 ```
 
 ## Validation Checklist
-- [ ] 所有 contracts 皆有對應測試 (T008–T016)
-- [ ] 每個實體皆有 Model 任務 (AudioFile/FolderNode/UserPreference/SearchIndex) (T025–T028)
-- [ ] 測試任務皆於實作之前列出 (Phase 3.2 > 3.3+)  
-- [ ] [P] 任務無同檔衝突  
-- [ ] 整合與性能測試在 Core 完成後執行  
-- [ ] Polish 前具備綠燈基礎
- - [ ] 單元測試（tokenizer/search/waveform）已補 (T061–T063)
+- [x] 所有 contracts 皆有對應測試 (T008–T016)
+- [x] 每個實體皆有 Model 任務 (AudioFile/FolderNode/UserPreference/SearchIndex) (T025–T028)
+- [x] 測試任務皆於實作之前列出 (Phase 3.2 > 3.3+)  
+- [x] [P] 任務無同檔衝突  
+- [x] 整合與性能測試在 Core 完成後執行  
+- [x] Polish 前具備綠燈基礎
+ - [x] 單元測試（tokenizer/search/waveform）已補 (T061–T063)
 
 ## Pending Refactor Notes
-- R001: 實作 T032A 需：
-	1. 於 `waveform_service.py` 由 file_id 尋找對應 AudioFile.relative_path，組合實際音檔絕對路徑，再以相同資料夾/檔名 `.png` 作為 target。
-	2. 移除集中 `WAVEFORM_DIR` 常數（或保留為 fallback）。
-	3. 更新掃描流程（可選）在掃描時若發現現有 `.png` 即寫入 AudioFile.waveform_png_path。
-	4. API `/files/{id}/waveform` 回傳相對路徑（或絕對）需與新策略一致。
-	5. 後續更新或新增單元測試覆蓋此行為。
+- (none) R001 已完成於 T032A 與後續重構
 
