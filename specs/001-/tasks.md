@@ -4,12 +4,12 @@
 **Prerequisites**: plan.md, research.md, data-model.md, contracts/, quickstart.md
 
 ## Phase 3.1: Setup
-- [ ] T001 建立專案目錄結構 backend/ 與 frontend/（含 src/, tests/ 子目錄）
-- [ ] T002 初始化 backend Python 專案 (pyproject/requirements) 選定 FastAPI + uvicorn + pydantic
-- [ ] T003 初始化 frontend TypeScript 專案 (tsconfig, package.json)（原生 TS + minimal build 工具）
-- [ ] T004 [P] 設定共用程式碼格式與 Lint (black, isort, ruff, eslint, prettier)
-- [ ] T005 建立 SQLite 初始化腳本 (backend/src/models/db_init.py) 僅建立評價與描述相關表
-- [ ] T006 設定 .env.example (ROOT_AUDIO_DIR, DATABASE_URL)
+- [x] T001 建立專案目錄結構 backend/ 與 frontend/（含 src/, tests/ 子目錄）
+- [x] T002 初始化 backend Python 專案 (pyproject/requirements) 選定 FastAPI + uvicorn + pydantic
+- [x] T003 初始化 frontend TypeScript 專案 (tsconfig, package.json)（原生 TS + minimal build 工具）
+- [x] T004 [P] 設定共用程式碼格式與 Lint (black, isort, ruff, eslint, prettier)
+- [x] T005 建立 SQLite 初始化腳本 (backend/src/models/db_init.py) 僅建立評價與描述相關表
+- [x] T006 設定 .env.example (ROOT_AUDIO_DIR, DATABASE_URL)
 
 ## Phase 3.2: Tests First (TDD) ⚠️ MUST FAIL INITIALLY
 **Contract / Schema / Integration / 性能基準骨架**
