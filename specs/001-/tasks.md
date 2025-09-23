@@ -45,9 +45,9 @@
 - [ ] T032 波形服務：MP3 無 PNG 時生成並快取 (backend/src/services/waveform_service.py)
 - [ ] T033 檔案樹服務：惰性載入節點 (backend/src/services/tree_service.py)
 - [ ] T034 播放/Metadata 服務：取得檔案路徑與基本屬性 (backend/src/services/playback_service.py)
-- [ ] T035 標記服務：星級與描述讀寫 (backend/src/services/annotation_service.py)
-- [ ] T036 搜尋服務：依 token + 星級過濾 (backend/src/services/search_service.py)
-- [ ] T037 統計服務：產生格式/星級統計 (backend/src/services/stats_service.py)
+ - [x] T035 標記服務：星級與描述讀寫 (backend/src/services/annotation_service.py)
+ - [x] T036 搜尋服務：依 token + 星級過濾 (backend/src/services/search_service.py)
+ - [x] T037 統計服務：產生格式/星級統計 (backend/src/services/stats_service.py)
 
 ## Phase 3.5: API Endpoints (align with contracts)
 - [ ] T038 Router: /scan/start (backend/src/api/scan.py)
