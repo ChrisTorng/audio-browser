@@ -4,77 +4,77 @@
 ### AudioFile
 | Field | Type | Description | Notes |
 |-------|------|-------------|-------|
-| id | UUID | 主鍵 | 由掃描流程產生 (path hash) |
-| relativePath | string | 相對於根目錄之路徑 | 用於顯示與搜尋 |
-| fileName | string | 檔名 | 支援多語 |
-| format | enum | WAV/MP3/FLAC/OGG/AAC | 其他標記 unsupported |
-| duration | float | 秒數 | 由解碼後取得 |
-| size | int | 位元組大小 | 用於排序/門檻策略 |
-| waveformStatus | enum | pending/generating/ready/error | 快取狀態 |
-| starRating | int | 0-5 | 只有有值時寫入 SQLite |
-| description | string | 使用者描述 | 選填 |
-| createdAt | datetime | 檔案建立時間 | 可能用於排序 |
-| lastModifiedAt | datetime | 檔案最後修改 | 快取失效依據 |
-| scanStatus | enum | active/skipped/unsupported | 不支援格式標記 |
+| id | UUID | 主鍵 | path hash |
+| relativePath | string | 相對於根目錄之路徑 | 顯示與搜尋索引鍵 |
+| fileName | string | 檔名 | 英數字假設，不正規化 |
+| format | enum | WAV/MP3/FLAC/OGG/AAC | 其他 → unsupported |
+| duration | float | 秒數 | 首次解碼後回填 |
+| size | int | 位元組大小 | 排序 / 閾值策略 |
+| waveformPngPath | string | 對應波形 PNG 檔案路徑 | 掃描 MP3 無檔時預先生成 |
+| starRating | int | 0-5 | 有值才寫入 SQLite |
+| description | string | 使用者描述 | <=1024 chars (待最終確認) |
+| createdAt | datetime | 檔案建立時間 | 排序可用 |
+| lastModifiedAt | datetime | 檔案最後修改 | 快取失效判定 |
+| scanStatus | enum | active/skipped/unsupported | 不支援格式記錄 |
 
 ### FolderNode
 | Field | Type | Description |
 |-------|------|-------------|
-| id | UUID | 主鍵 (path hash) |
+| id | UUID | path hash |
 | name | string | 資料夾名稱 |
-| path | string | 絕對 or 相對路徑（相對 root 優先） |
+| path | string | 相對 root 路徑 |
 | childrenLoaded | bool | 是否已載入子節點 |
-| expanded | bool | UI 狀態（可持久化） |
+| expanded | bool | UI 展開狀態 (可延後持久化) |
 
-### WaveformCache
+### WaveformCache (DEFERRED / Optional)
+若改用純 PNG 預先生成策略且檔案皆短，可暫不建立此實體。
 | Field | Type | Description |
 |-------|------|-------------|
 | audioFileId | UUID | 對應 AudioFile |
-| resolution | int | 採樣點數 | 依 UI 寬度動態 | 
-| segments | blob/json | 壓縮後樣本資料 | 大檔案分段 |
-| generatedAt | datetime | 生成時間 | 判斷是否重算 |
+| resolution | int | 採樣點數 | 需抽樣才建立 |
+| segments | blob/json | 抽樣資料 | 長檔專用延後 |
+| generatedAt | datetime | 生成時間 | 失效判定 |
 
 ### UserPreference
 | Field | Type | Description |
 |-------|------|-------------|
-| id | UUID | 單使用者設定 (可固定 'local') |
-| lastExpandedPaths | json | 最近展開的資料夾集合 |
+| id | UUID | 單一使用者 (固定 'local') |
+| lastExpandedPaths | json | 展開資料夾集合 (DEFERRED) |
 | lastSelectedAudio | UUID | 上次選取音檔 |
 | displayDensity | enum | compact/comfortable |
 
 ### SearchIndex
 | Field | Type | Description |
 |-------|------|-------------|
-| term | string | 標準化後索引詞 |
+| term | string | token (lowercased) |
 | audioFileIds | array | 對應音檔集合 |
-| updatedAt | datetime | 索引更新时间 |
+| updatedAt | datetime | 更新時間 |
 
 ## Relationships
 - FolderNode 1..* → (FolderNode | AudioFile)
-- AudioFile 1..1 → WaveformCache (可延遲)
-- UserPreference 1 → 多組 UI 狀態欄位
-- SearchIndex N..* → AudioFile 多對多關聯（實際以倒排索引結構儲存）
+- AudioFile 可選 → WaveformCache (長檔案策略時)
+- UserPreference 1 → (多 UI 狀態欄位)
+- SearchIndex 多對多 → AudioFile (倒排索引表示)
 
-## State Transitions
-### WaveformStatus
-pending → generating → ready
-pending → generating → error (可重試回到 pending)
-
-## Derived / Computed Fields
-- path hash (SHA1 or xxhash) 用於穩定 id
-- duration 可能於第一播放 decode 後回填
+## State / Lifecycle
+- MP3 掃描 → 若無波形 PNG → 生成 PNG → 設定 waveformPngPath
+- 更新檔案 (mtime 變動) → 重新生成 PNG
 
 ## Validation Rules
 - starRating ∈ [0,5]
-- description 長度限制 (e.g. <= 1024 chars) [NEEDS CLARIFICATION: 上限?]
-- waveform resolution ∈ {256,512,1024,2048} [NEEDS CLARIFICATION: 集合?]
+- description 長度 ≤ 1024 (待確認)
+- waveformPngPath 必須存在於檔案系統 (對 MP3)
+
+## Deferred / Optional
+- WaveformCache 抽樣資料（長音檔）
+- 展開狀態持久化
+- 其他排序欄位 (建立時間、大小)
 
 ## Indexing Strategy (Draft)
-- Primary lookup: id
+- Primary: id
 - Secondary: relativePath (unique)
-- SearchIndex: tokenized (lowercased, diacritics stripped) terms referencing sets of audioFileIds
+- Search: token 化 (lowercase, split by / 和 - _ .)
 
-## Open Questions Impacting Model
-- 是否儲存原始 metadata 摘要 (bitrate, sampleRate)?
-- 是否需多使用者支援？
-- 是否需標籤(tags) 擴充？
+## Open Questions
+- 是否需要 lazy 校驗 waveformPngPath 是否失效？
+- 是否要提供重新生成全部波形的批次操作？
