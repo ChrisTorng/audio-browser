@@ -43,6 +43,7 @@
 ## Phase 3.4: Services Layer
 - [x] T031 掃描服務：遞迴取得 MP3/其他支援格式 (backend/src/services/scan_service.py)
 - [x] T032 波形服務：MP3 無 PNG 時生成並快取 (backend/src/services/waveform_service.py)
+ - [ ] T032A 波形服務調整：改為於音檔相同資料夾生成同檔名 .png（取代集中 waveforms/ 目錄），更新 FR-004 與實作（需調整 `waveform_service.py` 與 API 回傳路徑）。
 - [x] T033 檔案樹服務：惰性載入節點 (backend/src/services/tree_service.py)
 - [x] T034 播放/Metadata 服務：取得檔案路徑與基本屬性 (backend/src/services/playback_service.py)
  - [x] T035 標記服務：星級與描述讀寫 (backend/src/services/annotation_service.py)
@@ -120,4 +121,12 @@ T061 T062 T063
 - [ ] [P] 任務無同檔衝突  
 - [ ] 整合與性能測試在 Core 完成後執行  
 - [ ] Polish 前具備綠燈基礎
+
+## Pending Refactor Notes
+- R001: 實作 T032A 需：
+	1. 於 `waveform_service.py` 由 file_id 尋找對應 AudioFile.relative_path，組合實際音檔絕對路徑，再以相同資料夾/檔名 `.png` 作為 target。
+	2. 移除集中 `WAVEFORM_DIR` 常數（或保留為 fallback）。
+	3. 更新掃描流程（可選）在掃描時若發現現有 `.png` 即寫入 AudioFile.waveform_png_path。
+	4. API `/files/{id}/waveform` 回傳相對路徑（或絕對）需與新策略一致。
+	5. 後續更新或新增單元測試覆蓋此行為。
 

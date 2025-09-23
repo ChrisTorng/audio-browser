@@ -82,7 +82,7 @@ When creating this spec from a user prompt:
 - **FR-001**: 系統 MUST 讓使用者指定根資料夾以進行遞迴掃描。
 - **FR-002**: 系統 MUST 建立音檔樹狀結構依資料夾階層顯示。
 - **FR-003**: 系統 MUST 支援的音檔格式至少含: WAV, MP3, FLAC, OGG, AAC。
-- **FR-004**: 系統 MUST 對每個 MP3 檔檢查是否已有對應波形 png；若無則自動生成並儲存檔案（不需進度顯示）。
+- **FR-004**: 系統 MUST 對每個支援格式音檔檢查其所在資料夾內是否已有同檔名且副檔名為 `.png` 的波形圖（例如 `loop1.mp3` → `loop1.png` 同資料夾）；若無則自動生成並儲存於與原音檔相同資料夾與檔名（僅副檔名改為 .png）的檔案（不需進度顯示；不再集中於單一 `waveforms/` 目錄）。
 - **FR-005**: 系統 MUST 提供鍵盤導覽（上下、展開/收合、Enter 播放）。
 - **FR-006**: 系統 MUST 即時播放目前選取音檔並顯示播放進度。
 - **FR-007**: 系統 MUST 允許對每個音檔設定 0–5 星級評價。
@@ -110,7 +110,8 @@ When creating this spec from a user prompt:
 - **NFR-007**: 波形生成在背景執行不阻塞 UI。
 
 ### Key Entities
-- **AudioFile**: id、relativePath、fileName、format、duration、size、waveformPngPath、starRating、description、createdAt、lastModifiedAt、scanStatus。
+- **AudioFile**: id、relativePath、fileName、format、duration、size、waveformPngPath、starRating、description、createdAt、lastModifiedAt、scanStatus。  
+   - waveformPngPath: 指向與原音檔相同資料夾下同檔名（副檔名改為 .png）的相對路徑，例如 `drums/kick01.mp3` 對應 `drums/kick01.png`。
 - **FolderNode**: id、name、path、children、expandedState、lazyLoaded。
 - **WaveformCache**: audioFileId、generatedAt、resolution、status、partialSegments（MP3 png 生成後可選擇省略此實體簡化）。
 - **UserPreference**: id、lastExpandedPaths、lastSelectedAudioId、displayDensity。
