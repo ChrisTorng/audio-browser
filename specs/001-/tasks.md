@@ -71,11 +71,11 @@
 - [x] T053 鍵盤快捷處理 (frontend/src/lib/keyboard.ts)
 
 ## Phase 3.7: Frontend Integration
-- [ ] T054 API 客戶端封裝 (frontend/src/lib/api.ts)
-- [ ] T055 整合播放流程（選取 → 播放 → 高亮）(frontend/src/integration/play_flow.ts)
-- [ ] T056 整合搜尋與篩選 (frontend/src/integration/search_flow.ts)
-- [ ] T057 整合標記與持久化回填 (frontend/src/integration/annotation_flow.ts)
-- [ ] T058 整合波形 PNG 載入占位符 (frontend/src/integration/waveform_flow.ts)
+- [x] T054 API 客戶端封裝 (frontend/src/lib/api.ts)
+- [x] T055 整合播放流程（選取 → 播放 → 高亮）(frontend/src/integration/play_flow.ts)
+- [x] T056 整合搜尋與篩選 (frontend/src/integration/search_flow.ts)
+- [x] T057 整合標記與持久化回填 (frontend/src/integration/annotation_flow.ts)
+- [x] T058 整合波形 PNG 載入占位符 (frontend/src/integration/waveform_flow.ts)
 
 ## Phase 3.8: Integration & Performance Tests Execution
 - [ ] T059 執行全部 contract + integration 測試並確保最初失敗案例趨向綠燈
