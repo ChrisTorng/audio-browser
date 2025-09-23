@@ -33,12 +33,12 @@
 - [x] T024 Performance Baseline Test: 搜尋回應 <300ms (tests/performance/test_search_latency.py)
 
 ## Phase 3.3: Core Models & Index (ONLY after 3.2 written & failing)
-- [ ] T025 [P] Model: 建立 AudioFile 資料結構 (backend/src/models/audio_file.py)
-- [ ] T026 [P] Model: 建立 FolderNode 結構 (backend/src/models/folder_node.py)
-- [ ] T027 [P] Model: 建立 UserPreference 結構 (backend/src/models/user_preference.py)
-- [ ] T028 [P] Model: 建立 SearchIndex 結構 (backend/src/models/search_index.py)
-- [ ] T029 建立 DB schema (backend/src/models/schema.py)（含星級/描述表 + 索引基底）
-- [ ] T030 實作索引 tokenization 函式 (backend/src/lib/tokenizer.py)
+- [x] T025 [P] Model: 建立 AudioFile 資料結構 (backend/src/models/audio_file.py)
+- [x] T026 [P] Model: 建立 FolderNode 結構 (backend/src/models/folder_node.py)
+- [x] T027 [P] Model: 建立 UserPreference 結構 (backend/src/models/user_preference.py)
+- [x] T028 [P] Model: 建立 SearchIndex 結構 (backend/src/models/search_index.py)
+- [x] T029 建立 DB schema (backend/src/models/schema.py)（含星級/描述表 + 索引基底）
+- [x] T030 實作索引 tokenization 函式 (backend/src/lib/tokenizer.py)
 
 ## Phase 3.4: Services Layer
 - [ ] T031 掃描服務：遞迴取得 MP3/其他支援格式 (backend/src/services/scan_service.py)
