@@ -82,9 +82,9 @@
 - [x] T060 調整服務/索引確保 performance baseline 達標
 
 ## Phase 3.9: Polish
-- [ ] T061 [P] 新增單元測試：tokenizer (backend/tests/unit/test_tokenizer.py)
-- [ ] T062 [P] 新增單元測試：search service (backend/tests/unit/test_search_service.py)
-- [ ] T063 [P] 新增單元測試：waveform service (backend/tests/unit/test_waveform_service.py)
+- [x] T061 [P] 新增單元測試：tokenizer (backend/tests/unit/test_tokenizer.py)
+- [x] T062 [P] 新增單元測試：search service (backend/tests/unit/test_search_service.py)
+- [x] T063 [P] 新增單元測試：waveform service (backend/tests/unit/test_waveform_service.py)
 - [ ] T064 覆蓋率報告整合 (pytest + 前端測試) (reports/coverage/)
 - [ ] T065 重構：拆分超過複雜度上限函式
 - [ ] T066 補充文件：更新 quickstart + API 說明 (docs/api.md)
@@ -121,6 +121,7 @@ T061 T062 T063
 - [ ] [P] 任務無同檔衝突  
 - [ ] 整合與性能測試在 Core 完成後執行  
 - [ ] Polish 前具備綠燈基礎
+ - [ ] 單元測試（tokenizer/search/waveform）已補 (T061–T063)
 
 ## Pending Refactor Notes
 - R001: 實作 T032A 需：
