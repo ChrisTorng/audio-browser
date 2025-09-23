@@ -1,6 +1,5 @@
 from __future__ import annotations
 from typing import List, Dict, Optional
-from .scan_service import ScanStatus, get_status
 from ..lib.tokenizer import tokenize
 from ..models.audio_file import AudioFile
 
