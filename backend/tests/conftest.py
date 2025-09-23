@@ -32,6 +32,13 @@ def temp_audio_dir():
 def _env_setup(temp_audio_dir):
     os.environ.setdefault("ROOT_AUDIO_DIR", str(temp_audio_dir))
     os.environ.setdefault("DATABASE_URL", "test_audio.db")
+    # 建立測試音檔（極小 placeholder），供掃描與波形生成測試
+    samples = ["kick.mp3", "snare.wav"]
+    for name in samples:
+        p = temp_audio_dir / name
+        if not p.exists():
+            # 寫入極小內容（非有效音訊，但用於存在測試即可）
+            p.write_bytes(b"TEST")
 
 @pytest.fixture()
 def client():

@@ -2,6 +2,7 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import List, Optional
 from ..services import tree_service, playback_service, waveform_service, annotation_service, scan_service
+from fastapi import HTTPException
 
 router = APIRouter()
 
@@ -29,7 +30,10 @@ async def list_files():
 
 @router.get('/{file_id}/waveform')
 async def get_waveform(file_id: str):
-    path = await waveform_service.get_or_generate_waveform(file_id)
+    try:
+        path = await waveform_service.get_or_generate_waveform(file_id)
+    except FileNotFoundError:
+        raise HTTPException(status_code=404, detail="file_id not found")
     return {"file_id": file_id, "waveform_png_path": path}
 
 @router.put('/{file_id}/rating')

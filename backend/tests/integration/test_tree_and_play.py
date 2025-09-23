@@ -1,15 +1,22 @@
 from fastapi.testclient import TestClient
+import time
+
+def _wait_for_scan(client: TestClient, timeout=3):
+    start = time.time()
+    while time.time() - start < timeout:
+        st = client.get("/scan/status").json()
+        if not st.get("running") and st.get("total", 0) > 0 and st.get("progress") == st.get("total"):
+            return True
+        time.sleep(0.05)
+    return False
 
 def test_tree_and_play_flow(client: TestClient):
-    # 1. 啟動掃描
     r1 = client.post("/scan/start")
     assert r1.status_code == 202
-    # 2. 查詢狀態 (最終 200 with progress)
-    r2 = client.get("/scan/status")
-    assert r2.status_code == 200
-    # 3. 取得根目錄樹
+    assert _wait_for_scan(client)
     r3 = client.get("/files/tree")
     assert r3.status_code == 200
-    # 4. 選取第一個檔案並請求 waveform
-    r4 = client.get("/files/placeholder-id/waveform")
+    files = client.get("/files/list").json()
+    first_id = files[0]["id"]
+    r4 = client.get(f"/files/{first_id}/waveform")
     assert r4.status_code == 200

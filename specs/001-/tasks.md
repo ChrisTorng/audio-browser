@@ -43,7 +43,7 @@
 ## Phase 3.4: Services Layer
 - [x] T031 掃描服務：遞迴取得 MP3/其他支援格式 (backend/src/services/scan_service.py)
 - [x] T032 波形服務：MP3 無 PNG 時生成並快取 (backend/src/services/waveform_service.py)
- - [ ] T032A 波形服務調整：改為於音檔相同資料夾生成同檔名 .png（取代集中 waveforms/ 目錄），更新 FR-004 與實作（需調整 `waveform_service.py` 與 API 回傳路徑）。
+ - [x] T032A 波形服務調整：改為於音檔相同資料夾生成同檔名 .png（取代集中 waveforms/ 目錄），更新 FR-004 與實作（需調整 `waveform_service.py` 與 API 回傳路徑）。
 - [x] T033 檔案樹服務：惰性載入節點 (backend/src/services/tree_service.py)
 - [x] T034 播放/Metadata 服務：取得檔案路徑與基本屬性 (backend/src/services/playback_service.py)
  - [x] T035 標記服務：星級與描述讀寫 (backend/src/services/annotation_service.py)
