@@ -85,11 +85,11 @@
 - [x] T061 [P] 新增單元測試：tokenizer (backend/tests/unit/test_tokenizer.py)
 - [x] T062 [P] 新增單元測試：search service (backend/tests/unit/test_search_service.py)
 - [x] T063 [P] 新增單元測試：waveform service (backend/tests/unit/test_waveform_service.py)
-- [ ] T064 覆蓋率報告整合 (pytest + 前端測試) (reports/coverage/)
+- [x] T064 覆蓋率報告整合 (pytest + 前端測試) (reports/coverage/)
 - [ ] T065 重構：拆分超過複雜度上限函式
-- [ ] T066 補充文件：更新 quickstart + API 說明 (docs/api.md)
-- [ ] T067 手動測試腳本/說明 (docs/manual-test.md)
-- [ ] T068 性能結果紀錄 (docs/performance.md)
+- [x] T066 補充文件：更新 quickstart + API 說明 (docs/api.md)
+- [x] T067 手動測試腳本/說明 (docs/manual-test.md)
+- [x] T068 性能結果紀錄 (docs/performance.md)
 
 ## Dependencies
 - Setup (T001–T006) → 所有後續
