@@ -180,33 +180,7 @@ docs/            # API 與手動測試文件
 
 ---
 ## ⚖️ 授權 (MIT License)
-本專案採用 MIT 授權。你可自由使用、複製、修改、合併、發布、散布、再授權與/或販售本軟體的複本，惟需保留下列著作權與授權聲明。
-
-```
-MIT License
-
-Copyright (c) 2025 Audio Browser Contributors
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
-
-> 建議另外新增根目錄 `LICENSE` 檔（可直接複製上方內容）。
+本專案採用 MIT 授權。
 
 ---
 ## 📬 聯絡 / 問題回報
